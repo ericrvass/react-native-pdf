@@ -116,7 +116,7 @@ public class PdfView extends PDFView implements OnPageChangeListener,OnLoadCompl
             this.fromFile(pdfFile)
                 .defaultPage(this.page-1)
                 //.showMinimap(false)
-                //.enableSwipe(true)
+                .enableSwipe(true)
                 .swipeHorizontal(this.horizontal)
                 .onPageChange(this)
                 .onLoad(this)
