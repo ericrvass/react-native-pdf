@@ -22,7 +22,6 @@ import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnErrorListener;
-import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -117,21 +116,11 @@ public class PdfView extends PDFView implements OnPageChangeListener,OnLoadCompl
                 .defaultPage(this.page-1)
                 //.showMinimap(false)
                 .enableSwipe(true)
-                .swipeHorizontal(this.horizontal)
+                .swipeVertical(!this.horizontal)
                 .onPageChange(this)
                 .onLoad(this)
                 .onError(this)
-                .spacing(this.spacing)
                 .password(this.password)
-                .enableAntialiasing(this.enableAntialiasing)
-                .onRender(new OnRenderListener() {
-                                @Override
-                                public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
-                                    if (fitWidth) {
-                                        instance.fitToWidth(page-1);
-                                    }
-                                }
-                            })
                 .load();
 
             this.zoomCenteredTo(this.scale, pivot);
